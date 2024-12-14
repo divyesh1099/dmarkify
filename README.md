@@ -45,7 +45,7 @@ Dmarkify is a full-featured, open-source watermarking tool designed to handle te
 ### Backend Setup
 1. **Clone the repository**:
    ```bash
-   git clone https://github.com/yourusername/dmarkify.git
+   git clone https://github.com/divyesh1099/dmarkify.git
    cd dmarkify/dmarkify_backend
    ```
 
@@ -199,3 +199,5 @@ The frontend will run at `http://localhost:3000`.
 
 ## **License**
 This project is licensed under the **MIT License**.
+
+## **Love you Moti❤️**
