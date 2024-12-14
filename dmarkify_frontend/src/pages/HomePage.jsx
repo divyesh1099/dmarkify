@@ -26,11 +26,12 @@ const HomePage = () => {
 
   const previewWidth = 256;
   const previewHeight = 256;
+  const API_BASE_URL = "https://dmarkify.pythonanywhere.com"
 
   useEffect(() => {
     const fetchFonts = async () => {
       try {
-        const response = await axios.get("http://127.0.0.1:8000/watermark/list_fonts/");
+        const response = await axios.get(`${API_BASE_URL}/watermark/list_fonts/`);
         setFonts(response.data.fonts);
       } catch (error) {
         console.error("Error fetching fonts:", error);
@@ -41,7 +42,7 @@ const HomePage = () => {
 
   useEffect(() => {
     if (font) {
-      setDynamicFontUrl(`http://127.0.0.1:8000/static/fonts/${font}.ttf`);
+      setDynamicFontUrl(`${API_BASE_URL}/static/fonts/${font}.ttf`);
     }
   }, [font]);
 
@@ -54,7 +55,7 @@ const HomePage = () => {
     formData.append("font_file", fontFile);
     try {
       const response = await axios.post(
-        "http://127.0.0.1:8000/watermark/upload_font/",
+        `${API_BASE_URL}/watermark/upload_font/`,
         formData,
         {
           headers: {
@@ -64,10 +65,10 @@ const HomePage = () => {
       );
       alert(`Font uploaded successfully: ${response.data.font_name}`);
       setFontFile(null);
-      const updatedFonts = await axios.get("http://127.0.0.1:8000/watermark/list_fonts/");
+      const updatedFonts = await axios.get(`${API_BASE_URL}/watermark/list_fonts/`);
       setFonts(updatedFonts.data.fonts);
       setFont(response.data.font_name.split('.')[0]);
-      setDynamicFontUrl(`http://127.0.0.1:8000/static/fonts/${response.data.font_name}`);
+      setDynamicFontUrl(`${API_BASE_URL}/static/fonts/${response.data.font_name}`);
     } catch (error) {
       console.error("Error uploading font:", error);
       alert("Failed to upload font. Please try again.");
@@ -140,7 +141,7 @@ const HomePage = () => {
 
     try {
       const response = await axios.post(
-        "http://127.0.0.1:8000/watermark/upload/",
+        `${API_BASE_URL}/watermark/upload/`,
         formData,
         {
           headers: {
