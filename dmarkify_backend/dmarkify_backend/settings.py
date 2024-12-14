@@ -55,6 +55,7 @@ MIDDLEWARE = [
 
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",
+    "https://dmarkify.vercel.app",
 ]
 
 ROOT_URLCONF = 'dmarkify_backend.urls'
